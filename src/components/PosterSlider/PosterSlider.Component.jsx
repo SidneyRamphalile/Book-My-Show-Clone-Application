@@ -78,7 +78,7 @@ import Slider from "react-slick";
 import Poster from "../Poster/Poster.Component";
 
 const PosterSlider = (props) => {
-  const { posters, title, subtitle, isDark} = props;
+  const { posters, title, subtitle, isDark, config } = props;
   const settings = {
     infinite: true,
     speed: 500,
@@ -115,17 +115,20 @@ const PosterSlider = (props) => {
           {subtitle}
         </p>
       </div>
-        <Slider {...settings} className="gap-6">
-          {" "}
-          {/* Add gap-6 here */}
+      {config && (
+        <Slider {...config}>
           {posters.map((each, index) => (
-            <div key={index} className="p-2">
-              {" "}
-              {/* Add padding or margin */}
-              <Poster {...each} isDark={isDark} />
-            </div>
+            <Poster {...each} isDark={isDark} key={index} />
           ))}
         </Slider>
+      )}
+      {!config && (
+        <Slider {...settings}>
+          {posters.map((each, index) => (
+            <Poster {...each} isDark={isDark} key={index} />
+          ))}
+        </Slider>
+      )}
     </>
   );
 };

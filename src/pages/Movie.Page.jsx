@@ -9,9 +9,6 @@ import PosterSlider from "../components/PosterSlider/PosterSlider.Component";
 import MovieHero from "../components/MovieHero/MovieHero.Component";
 import Cast from "../components/Cast/Cast.Component";
 
-
-
-
 const MoviePage = () => {
   const { id } = useParams();
   const { movie, setMovie } = useContext(MovieContext);
